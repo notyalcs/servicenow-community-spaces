@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
-  <sp_widget action="INSERT_OR_UPDATE">
-    <sys_id>a32b2fbee18b4b8c87fd02a34c7a66da</sys_id>
-    <sys_scope display_value="x_2084960_commun_0">f1eeab0d83e94710c42256a6feaad344</sys_scope>
-    <sys_update_name>sp_widget_a32b2fbee18b4b8c87fd02a34c7a66da</sys_update_name>
-    <category>custom</category>
-    <client_script><![CDATA[api.controller = function($location) {
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($location) {
   var c = this;
   c.submitting = false;
 
@@ -47,8 +44,8 @@
   };
 };
 ]]></client_script>
-    <controller_as>c</controller_as>
-    <css><![CDATA[.sp-report-issue {
+        <controller_as>c</controller_as>
+        <css>.sp-report-issue {
   padding: 20px 0;
   max-width: 600px;
   margin: 0 auto;
@@ -101,22 +98,22 @@
 .sp-alert-actions {
   margin-top: 12px;
 }
-]]></css>
-    <data_table>sp_instance</data_table>
-    <demo_data/>
-    <description/>
-    <docs/>
-    <field_list/>
-    <has_preview>false</has_preview>
-    <id>cs_portal_report_issue_widget</id>
-    <internal>false</internal>
-    <link>function link(scope, element, attrs, controller) {
-}</link>
-    <name>CS Portal - Report Issue</name>
-    <option_schema/>
-    <public>false</public>
-    <roles/>
-    <script><![CDATA[(function() {
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>cs_portal_report_issue_widget</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+}]]></link>
+        <name>CS Portal - Report Issue</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
   data.spaces = [];
   data.message = '';
   data.success = false;
@@ -166,8 +163,20 @@
   }
 })();
 ]]></script>
-    <servicenow>false</servicenow>
-    <template><![CDATA[<div class="sp-report-issue">
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-17 22:41:52</sys_created_on>
+        <sys_id>a32b2fbee18b4b8c87fd02a34c7a66da</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CS Portal - Report Issue</sys_name>
+        <sys_package display_value="Community Spaces Portal" source="x_2084960_commun_0">f1eeab0d83e94710c42256a6feaad344</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Community Spaces Portal">f1eeab0d83e94710c42256a6feaad344</sys_scope>
+        <sys_update_name>sp_widget_a32b2fbee18b4b8c87fd02a34c7a66da</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-17 22:41:52</sys_updated_on>
+        <template><![CDATA[<div class="sp-report-issue">
   <h2 class="sp-report-title">Report an Issue</h2>
   <p class="sp-report-subtitle">Let us know about any problems with a community space</p>
 
@@ -229,5 +238,5 @@
   </div>
 </div>
 ]]></template>
-  </sp_widget>
+    </sp_widget>
 </record_update>

@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_container">
-  <sp_container action="INSERT_OR_UPDATE">
-    <sys_id>f10c226e71c345b88d89950db79be984</sys_id>
-    <sys_scope display_value="x_2084960_commun_0">f1eeab0d83e94710c42256a6feaad344</sys_scope>
-    <sys_update_name>sp_container_f10c226e71c345b88d89950db79be984</sys_update_name>
-    <background_color/>
-    <background_image/>
-    <background_style>default</background_style>
-    <bootstrap_alt>false</bootstrap_alt>
-    <class_name/>
-    <container_class_name/>
-    <name>Browse Container</name>
-    <order>1</order>
-    <semantic_tag/>
-    <sp_page id="cs_portal_browse">607145836541433f81604cde6d1417b8</sp_page>
-    <subheader>false</subheader>
-    <title/>
-    <width>container</width>
-  </sp_container>
+    <sp_container action="INSERT_OR_UPDATE">
+        <aria_label/>
+        <background_color/>
+        <background_image/>
+        <background_style>default</background_style>
+        <bootstrap_alt>false</bootstrap_alt>
+        <class_name/>
+        <container_class_name/>
+        <name>Browse Container</name>
+        <order>1</order>
+        <semantic_tag/>
+        <sp_page display_value="cs_portal_browse">607145836541433f81604cde6d1417b8</sp_page>
+        <subheader>false</subheader>
+        <sys_class_name>sp_container</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-17 22:41:51</sys_created_on>
+        <sys_id>f10c226e71c345b88d89950db79be984</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Browse Container</sys_name>
+        <sys_package display_value="Community Spaces Portal" source="x_2084960_commun_0">f1eeab0d83e94710c42256a6feaad344</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Community Spaces Portal">f1eeab0d83e94710c42256a6feaad344</sys_scope>
+        <sys_update_name>sp_container_f10c226e71c345b88d89950db79be984</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-17 22:41:51</sys_updated_on>
+        <title/>
+        <width>container</width>
+    </sp_container>
 </record_update>

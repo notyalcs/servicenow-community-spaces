@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role">
+    <sys_user_role action="DELETE">
+        <assignable_by/>
+        <can_delegate>true</can_delegate>
+        <description/>
+        <elevated_privilege>false</elevated_privilege>
+        <federated_id/>
+        <grantable>true</grantable>
+        <includes_roles/>
+        <name>x_2084960_commun_0.space_user</name>
+        <scoped_admin>false</scoped_admin>
+        <suffix>space_user</suffix>
+        <sys_class_name>sys_user_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-16 22:50:54</sys_created_on>
+        <sys_id>d8703fcd83e94710c42256a6feaad366</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_2084960_commun_0.space_user</sys_name>
+        <sys_package display_value="Community Spaces Portal" source="x_2084960_commun_0">f1eeab0d83e94710c42256a6feaad344</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Community Spaces Portal">f1eeab0d83e94710c42256a6feaad344</sys_scope>
+        <sys_update_name>sys_user_role_d8703fcd83e94710c42256a6feaad366</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-16 22:50:54</sys_updated_on>
+    </sys_user_role>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Community Spaces Portal">f1eeab0d83e94710c42256a6feaad344</application>
+        <file_path/>
+        <instance_id>c7166272fb5d03940c92f633beefdc99</instance_id>
+        <instance_name>dev401953</instance_name>
+        <name>sys_user_role_d8703fcd83e94710c42256a6feaad366</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role"><sys_user_role action="INSERT_OR_UPDATE"><assignable_by/><can_delegate>true</can_delegate><description/><elevated_privilege>false</elevated_privilege><federated_id/><grantable>true</grantable><includes_roles/><name>x_2084960_commun_0.space_user</name><scoped_admin>false</scoped_admin><suffix>space_user</suffix><sys_class_name>sys_user_role</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-06-16 22:50:54</sys_created_on><sys_id>d8703fcd83e94710c42256a6feaad366</sys_id><sys_mod_count>0</sys_mod_count><sys_name>x_2084960_commun_0.space_user</sys_name><sys_package display_value="Community Spaces Portal" source="x_2084960_commun_0">f1eeab0d83e94710c42256a6feaad344</sys_package><sys_policy/><sys_scope display_value="Community Spaces Portal">f1eeab0d83e94710c42256a6feaad344</sys_scope><sys_update_name>sys_user_role_d8703fcd83e94710c42256a6feaad366</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-06-16 22:50:54</sys_updated_on></sys_user_role></record_update>]]></payload>
+        <payload_hash>2041732507</payload_hash>
+        <record_name>x_2084960_commun_0.space_user</record_name>
+        <reverted_from/>
+        <source>b1eeab0d83e94710c42256a6feaad387</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-16 22:50:54</sys_created_on>
+        <sys_id>14707fcd83e94710c42256a6feaad337</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19ed2a16ac60000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-16 22:50:54</sys_updated_on>
+        <type>Role</type>
+        <update_guid>d0707fcdb9e94710afe6bcd71b1de336</update_guid>
+        <update_guid_history>d0707fcdb9e94710afe6bcd71b1de336:2041732507</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="x_2084960_commun_0.space_user">529c082183edc710c42256a6feaad38e</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-17 19:32:24</sys_created_on>
+        <sys_db_object display_value="" name="sys_user_role">sys_user_role</sys_db_object>
+        <sys_id>024c1b82542f454ca3453af782fb6810</sys_id>
+        <sys_metadata>d8703fcd83e94710c42256a6feaad366</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_2084960_commun_0.space_user</sys_name>
+        <sys_package display_value="Community Spaces Portal" source="x_2084960_commun_0">f1eeab0d83e94710c42256a6feaad344</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Community Spaces Portal">f1eeab0d83e94710c42256a6feaad344</sys_scope>
+        <sys_scope_delete display_value="">24bc0fd82f6f413f88b3ec8a2e3d1b01</sys_scope_delete>
+        <sys_update_name>sys_user_role_d8703fcd83e94710c42256a6feaad366</sys_update_name>
+        <sys_update_version display_value="sys_user_role_d8703fcd83e94710c42256a6feaad366">14707fcd83e94710c42256a6feaad337</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-17 19:32:24</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

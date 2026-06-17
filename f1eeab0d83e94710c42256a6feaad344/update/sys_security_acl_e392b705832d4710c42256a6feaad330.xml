@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
-  <sys_security_acl action="INSERT_OR_UPDATE">
-    <sys_id>e392b705832d4710c42256a6feaad330</sys_id>
-    <sys_scope display_value="x_2084960_commun_0">f1eeab0d83e94710c42256a6feaad344</sys_scope>
-    <sys_update_name>sys_security_acl_e392b705832d4710c42256a6feaad330</sys_update_name>
-    <active>true</active>
-    <admin_overrides>true</admin_overrides>
-    <advanced>false</advanced>
-    <applies_to/>
-    <condition/>
-    <decision_type>allow</decision_type>
-    <description>Allow read for Reservation records - Resident and Staff roles.</description>
-    <local_or_existing>Local</local_or_existing>
-    <name>x_2084960_commun_0_reservation</name>
-    <operation>read</operation>
-    <script/>
-    <security_attribute/>
-    <type>record</type>
-  </sys_security_acl>
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>false</advanced>
+        <applies_to/>
+        <condition/>
+        <controlled_by_refs/>
+        <decision_type>allow</decision_type>
+        <description>Allow read for records in x_2084960_commun_0_reservation, for users with roles (x_2084960_commun_0.resident, x_2084960_commun_0.staff).</description>
+        <local_or_existing>Local</local_or_existing>
+        <name>x_2084960_commun_0_reservation</name>
+        <operation display_value="read">read</operation>
+        <script/>
+        <security_attribute/>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-16 23:00:24</sys_created_on>
+        <sys_id>e392b705832d4710c42256a6feaad330</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>x_2084960_commun_0_reservation</sys_name>
+        <sys_package display_value="Community Spaces Portal" source="x_2084960_commun_0">f1eeab0d83e94710c42256a6feaad344</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Community Spaces Portal">f1eeab0d83e94710c42256a6feaad344</sys_scope>
+        <sys_update_name>sys_security_acl_e392b705832d4710c42256a6feaad330</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-17 19:32:16</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
 </record_update>

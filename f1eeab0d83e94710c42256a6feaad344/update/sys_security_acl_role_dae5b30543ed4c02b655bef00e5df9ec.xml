@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
-  <sys_security_acl_role action="INSERT_OR_UPDATE">
-    <sys_id>dae5b30543ed4c02b655bef00e5df9ec</sys_id>
-    <sys_scope display_value="x_2084960_commun_0">f1eeab0d83e94710c42256a6feaad344</sys_scope>
-    <sys_update_name>sys_security_acl_role_dae5b30543ed4c02b655bef00e5df9ec</sys_update_name>
-    <sys_security_acl>a792b705832d4710c42256a6feaad377</sys_security_acl>
-    <sys_user_role name="x_2084960_commun_0.staff">888993a07c584d2da8e9ea0681c3d04a</sys_user_role>
-  </sys_security_acl_role>
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-17 18:31:48</sys_created_on>
+        <sys_id>dae5b30543ed4c02b655bef00e5df9ec</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_2084960_commun_0_reservation.x_2084960_commun_0.staff</sys_name>
+        <sys_package display_value="Community Spaces Portal" source="x_2084960_commun_0">f1eeab0d83e94710c42256a6feaad344</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Community Spaces Portal">f1eeab0d83e94710c42256a6feaad344</sys_scope>
+        <sys_security_acl display_value="x_2084960_commun_0_reservation">a792b705832d4710c42256a6feaad377</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_dae5b30543ed4c02b655bef00e5df9ec</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-17 18:31:48</sys_updated_on>
+        <sys_user_role display_value="x_2084960_commun_0.staff" name="x_2084960_commun_0.staff">f9eeab0d83e94710c42256a6feaad390</sys_user_role>
+    </sys_security_acl_role>
 </record_update>

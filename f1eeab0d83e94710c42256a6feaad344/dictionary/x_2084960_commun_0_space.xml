@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="3cdf6b8d83e94710c42256a6feaad37b" label="Space" max_length="40" name="x_2084960_commun_0_space" type="collection">
+        <element label="Description" max_length="1000" name="description" type="string"/>
+        <element label="Capacity" max_length="40" name="capacity" type="integer"/>
+        <element label="Address" max_length="100" name="address" type="string"/>
+        <element label="Image URL" max_length="200" name="image_url" type="string"/>
+        <element label="Indoor" max_length="40" name="indoor" type="boolean"/>
+        <element choice="3" label="Space Type" max_length="40" name="space_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Outdoor Facility" sequence="3" value="outdoor_facility"/>
+                <element inactive_on_update="false" label="Court" sequence="1" value="court"/>
+                <element inactive_on_update="false" label="Sports Field" sequence="0" value="sports_field"/>
+                <element inactive_on_update="false" label="Community Centre" sequence="4" value="community_centre"/>
+                <element inactive_on_update="false" label="Indoor Space" sequence="2" value="indoor_space"/>
+            </choice>
+        </element>
+        <element choice="3" label="Status" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Open" sequence="0" value="open"/>
+                <element inactive_on_update="false" label="Limited" sequence="1" value="limited"/>
+                <element inactive_on_update="false" label="Closed" sequence="2" value="closed"/>
+            </choice>
+        </element>
+        <element label="Name" max_length="100" name="name" type="string"/>
+    </element>
+</database>

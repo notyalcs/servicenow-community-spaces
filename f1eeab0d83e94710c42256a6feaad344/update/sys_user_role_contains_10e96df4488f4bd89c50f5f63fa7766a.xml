@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role_contains">
-  <sys_user_role_contains action="INSERT_OR_UPDATE">
-    <sys_id>10e96df4488f4bd89c50f5f63fa7766a</sys_id>
-    <sys_scope display_value="x_2084960_commun_0">f1eeab0d83e94710c42256a6feaad344</sys_scope>
-    <sys_update_name>sys_user_role_contains_10e96df4488f4bd89c50f5f63fa7766a</sys_update_name>
-    <contains name="x_2084960_commun_0.resident">c5433208809143bfaaf660839b8ef31e</contains>
-    <role name="x_2084960_commun_0.admin">51b14e68fdbb4d02a5936e69ded8c460</role>
-  </sys_user_role_contains>
+    <sys_user_role_contains action="INSERT_OR_UPDATE">
+        <contains display_value="x_2084960_commun_0.resident" name="x_2084960_commun_0.resident">f9eeab0d83e94710c42256a6feaad3e1</contains>
+        <role display_value="x_2084960_commun_0.admin" name="x_2084960_commun_0.admin">bdeeab0d83e94710c42256a6feaad3cc</role>
+        <sys_class_name>sys_user_role_contains</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-17 18:31:48</sys_created_on>
+        <sys_id>10e96df4488f4bd89c50f5f63fa7766a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_2084960_commun_0.resident.x_2084960_commun_0.admin</sys_name>
+        <sys_package display_value="Community Spaces Portal" source="x_2084960_commun_0">f1eeab0d83e94710c42256a6feaad344</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Community Spaces Portal">f1eeab0d83e94710c42256a6feaad344</sys_scope>
+        <sys_update_name>sys_user_role_contains_10e96df4488f4bd89c50f5f63fa7766a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-17 18:31:48</sys_updated_on>
+    </sys_user_role_contains>
 </record_update>

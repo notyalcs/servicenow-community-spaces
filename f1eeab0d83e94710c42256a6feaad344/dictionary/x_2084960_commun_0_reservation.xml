@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="26727305832d4710c42256a6feaad33a" label="Reservation" max_length="40" name="x_2084960_commun_0_reservation" type="collection">
+        <element label="Event Details" max_length="40" name="event_details" type="string"/>
+        <element label="Date" max_length="40" name="date" type="glide_date"/>
+        <element label="Start Time" mandatory="true" max_length="255" name="start_time" type="glide_time"/>
+        <element label="Requested By" max_length="32" name="requested_by" reference="sys_user" type="reference"/>
+        <element label="Staff Notes" max_length="40" name="staff_notes" type="journal"/>
+        <element label="End Time" mandatory="true" max_length="40" name="end_time" type="glide_time"/>
+        <element choice="3" label="Status" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Denied" sequence="3" value="denied"/>
+                <element inactive_on_update="false" label="Under Review" sequence="1" value="under_review"/>
+                <element inactive_on_update="false" label="Submitted" sequence="0" value="submitted"/>
+                <element inactive_on_update="false" label="Completed" sequence="4" value="completed"/>
+                <element inactive_on_update="false" label="Approved" sequence="2" value="approved"/>
+            </choice>
+        </element>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded" label="Request Number" max_length="40" name="number" type="string"/>
+        <element label="Space" max_length="32" name="space" reference="x_2084960_commun_0_space" type="reference"/>
+        <index name="index">
+            <element name="requested_by"/>
+        </index>
+        <index name="index2">
+            <element name="space"/>
+        </index>
+    </element>
+</database>
