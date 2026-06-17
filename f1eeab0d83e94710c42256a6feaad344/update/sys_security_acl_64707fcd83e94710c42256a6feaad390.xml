@@ -9,7 +9,7 @@
     <applies_to/>
     <condition/>
     <decision_type>allow</decision_type>
-    <description>Allow read for Space records - Resident and Staff roles.</description>
+    <description>Allow public read access for records in x_2084960_commun_0_space (no roles required for demo browsing).</description>
     <local_or_existing>Local</local_or_existing>
     <name>x_2084960_commun_0_space</name>
     <operation>read</operation>
