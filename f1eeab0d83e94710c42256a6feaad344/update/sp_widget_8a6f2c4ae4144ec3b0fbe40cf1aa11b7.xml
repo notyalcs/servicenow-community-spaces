@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+  <sp_widget action="INSERT_OR_UPDATE">
+    <sys_id>8a6f2c4ae4144ec3b0fbe40cf1aa11b7</sys_id>
+    <sys_scope display_value="x_2084960_commun_0">f1eeab0d83e94710c42256a6feaad344</sys_scope>
+    <sys_update_name>sp_widget_8a6f2c4ae4144ec3b0fbe40cf1aa11b7</sys_update_name>
+    <category>custom</category>
+    <client_script><![CDATA[api.controller = function() {
+  var c = this;
+  c.expandedId = '';
+
+  c.toggleExpand = function(sysId) {
+    c.expandedId = (c.expandedId === sysId) ? '' : sysId;
+  };
+
+  c.isExpanded = function(sysId) {
+    return c.expandedId === sysId;
+  };
+
+  c.getStatusClass = function(status) {
+    if (!status) return 'sp-status-default';
+    var s = status.toLowerCase();
+    if (s === 'approved' || s === 'confirmed') return 'sp-status-success';
+    if (s === 'pending') return 'sp-status-warning';
+    if (s === 'rejected' || s === 'cancelled') return 'sp-status-danger';
+    return 'sp-status-info';
+  };
+};
+]]></client_script>
+    <controller_as>c</controller_as>
+    <css><![CDATA[.sp-my-requests {
+  padding: 20px 0;
+}
+
+.sp-requests-title {
+  color: $text-color;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.sp-requests-subtitle {
+  color: $text-secondary;
+  margin: 0 0 24px 0;
+}
+
+.sp-requests-list {
+  margin: 0;
+}
+
+.sp-request-item {
+  margin-bottom: 10px;
+  border-radius: $border-radius-base;
+  border: 1px solid $border-tertiary;
+  overflow: hidden;
+}
+
+.sp-request-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: background 0.15s ease;
+}
+
+.sp-request-header:hover {
+  background: $background-secondary;
+}
+
+.sp-request-summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.sp-request-number {
+  font-weight: 600;
+  color: $brand-primary;
+  font-size: $font-size-base;
+}
+
+.sp-request-space {
+  color: $text-color;
+  font-weight: 500;
+}
+
+.sp-request-date {
+  color: $text-secondary;
+  font-size: $font-size-small;
+}
+
+.sp-status-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.sp-status-success {
+  background: $state-success-bg;
+  color: $brand-success;
+}
+
+.sp-status-warning {
+  background: $state-warning-bg;
+  color: $brand-warning;
+}
+
+.sp-status-danger {
+  background: $state-danger-bg;
+  color: $brand-danger;
+}
+
+.sp-status-info {
+  background: $state-info-bg;
+  color: $brand-info;
+}
+
+.sp-status-default {
+  background: $background-secondary;
+  color: $text-secondary;
+}
+
+.sp-expand-icon {
+  color: $text-muted;
+  transition: transform 0.2s ease;
+}
+
+.sp-request-details {
+  padding: 0 16px 16px 16px;
+  border-top: 1px solid $border-tertiary;
+  background: $background-secondary;
+}
+
+.sp-detail-grid {
+  padding-top: 12px;
+}
+
+.sp-detail-item {
+  padding: 8px 0;
+  display: flex;
+  gap: 12px;
+}
+
+.sp-detail-label {
+  font-weight: 600;
+  color: $text-color;
+  min-width: 100px;
+  font-size: $font-size-small;
+}
+
+.sp-detail-value {
+  color: $text-secondary;
+  font-size: $font-size-small;
+}
+
+.sp-alert {
+  padding: 12px 16px;
+  border-radius: $border-radius-base;
+  margin-bottom: 20px;
+}
+
+.sp-alert-danger {
+  background: $state-danger-bg;
+  color: $brand-danger;
+}
+
+.sp-empty-state {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.sp-empty-icon {
+  font-size: 48px;
+  color: $text-muted;
+  margin-bottom: 16px;
+}
+
+.sp-empty-body {
+  color: $text-secondary;
+  font-size: $font-size-large;
+  margin: 0 0 8px 0;
+}
+
+.sp-empty-hint {
+  color: $text-muted;
+  font-size: $font-size-base;
+}
+]]></css>
+    <data_table>sp_instance</data_table>
+    <demo_data/>
+    <description/>
+    <docs/>
+    <field_list/>
+    <has_preview>false</has_preview>
+    <id>cs_portal_my_requests_widget</id>
+    <internal>false</internal>
+    <link>function link(scope, element, attrs, controller) {
+}</link>
+    <name>CS Portal - My Requests</name>
+    <option_schema/>
+    <public>false</public>
+    <roles/>
+    <script><![CDATA[(function() {
+  data.reservations = [];
+  data.message = '';
+
+  try {
+    var userId = gs.getUserID();
+    var gr = new GlideRecord('x_2084960_commun_0_reservation');
+    gr.addQuery('requested_by', userId);
+    gr.orderByDesc('date');
+    gr.setLimit(50);
+    gr.query();
+    while (gr.next()) {
+      data.reservations.push({
+        sys_id: gr.getUniqueValue(),
+        number: gr.getValue('number') + '',
+        space_name: gr.getDisplayValue('space') + '',
+        date: gr.getValue('date') + '',
+        start_time: gr.getValue('start_time') + '',
+        end_time: gr.getValue('end_time') + '',
+        status: gr.getValue('status') + '',
+        event_details: gr.getValue('event_details') + '',
+        staff_notes: gr.getValue('staff_notes') + ''
+      });
+    }
+  } catch(e) {
+    gs.error('My Requests widget error: ' + e.message);
+    data.message = 'An error occurred loading your reservations.';
+  }
+})();
+]]></script>
+    <servicenow>false</servicenow>
+    <template><![CDATA[<div class="sp-my-requests">
+  <h2 class="sp-requests-title">My Reservations</h2>
+  <p class="sp-requests-subtitle">Track the status of your space reservations</p>
+
+  <div class="sp-alert sp-alert-danger" ng-if="c.data.message" role="alert">
+    {{c.data.message}}
+  </div>
+
+  <div class="sp-requests-list" ng-if="c.data.reservations.length">
+    <div class="panel panel-default sp-request-item" ng-repeat="res in c.data.reservations track by res.sys_id">
+      <div class="panel-body sp-request-header" ng-click="c.toggleExpand(res.sys_id)">
+        <div class="sp-request-summary">
+          <span class="sp-request-number">{{res.number}}</span>
+          <span class="sp-request-space">{{res.space_name}}</span>
+          <span class="sp-request-date">{{res.date}}</span>
+          <span class="sp-status-badge" ng-class="c.getStatusClass(res.status)">{{res.status}}</span>
+        </div>
+        <i class="fa sp-expand-icon" ng-class="{'fa-chevron-down': !c.isExpanded(res.sys_id), 'fa-chevron-up': c.isExpanded(res.sys_id)}"></i>
+      </div>
+      <div class="sp-request-details" ng-if="c.isExpanded(res.sys_id)">
+        <div class="sp-detail-grid">
+          <div class="sp-detail-item">
+            <span class="sp-detail-label">Time</span>
+            <span class="sp-detail-value">{{res.start_time}} - {{res.end_time}}</span>
+          </div>
+          <div class="sp-detail-item" ng-if="res.event_details">
+            <span class="sp-detail-label">Event Details</span>
+            <span class="sp-detail-value">{{res.event_details}}</span>
+          </div>
+          <div class="sp-detail-item" ng-if="res.staff_notes">
+            <span class="sp-detail-label">Staff Notes</span>
+            <span class="sp-detail-value">{{res.staff_notes}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sp-empty-state" ng-if="!c.data.reservations.length && !c.data.message">
+    <i class="fa fa-calendar-o sp-empty-icon"></i>
+    <p class="sp-empty-body">You have no reservations yet.</p>
+    <p class="sp-empty-hint">Browse available spaces to make your first reservation.</p>
+  </div>
+</div>
+]]></template>
+  </sp_widget>
+</record_update>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+  <sp_widget action="INSERT_OR_UPDATE">
+    <sys_id>a32b2fbee18b4b8c87fd02a34c7a66da</sys_id>
+    <sys_scope display_value="x_2084960_commun_0">f1eeab0d83e94710c42256a6feaad344</sys_scope>
+    <sys_update_name>sp_widget_a32b2fbee18b4b8c87fd02a34c7a66da</sys_update_name>
+    <category>custom</category>
+    <client_script><![CDATA[api.controller = function($location) {
+  var c = this;
+  c.submitting = false;
+
+  c.form = {
+    space_id: $location.search().space_id || '',
+    issue_type: '',
+    severity: '',
+    description: ''
+  };
+
+  c.issueTypes = ['Damage', 'Cleanliness', 'Safety', 'Equipment', 'Noise', 'Access', 'Other'];
+  c.severities = ['Low', 'Medium', 'High', 'Critical'];
+
+  c.canSubmit = function() {
+    return !!(c.form.space_id && c.form.issue_type && c.form.severity && c.form.description);
+  };
+
+  c.submitIssue = function() {
+    if (!c.canSubmit()) return;
+    c.submitting = true;
+    c.data.message = '';
+    c.server.get({
+      action: 'submit',
+      space_id: c.form.space_id,
+      issue_type: c.form.issue_type,
+      severity: c.form.severity,
+      description: c.form.description
+    }).then(function(r) {
+      c.data = r.data;
+      c.submitting = false;
+      if (r.data.success) {
+        c.form = { space_id: '', issue_type: '', severity: '', description: '' };
+      }
+    });
+  };
+
+  c.goBack = function() {
+    $location.search('id', 'cs_portal_browse');
+    $location.search('space_id', null);
+  };
+};
+]]></client_script>
+    <controller_as>c</controller_as>
+    <css><![CDATA[.sp-report-issue {
+  padding: 20px 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.sp-report-title {
+  color: $text-color;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.sp-report-subtitle {
+  color: $text-secondary;
+  margin: 0 0 24px 0;
+}
+
+.sp-report-panel {
+  border-radius: $border-radius-large;
+  border: 1px solid $border-tertiary;
+}
+
+.sp-required {
+  color: $brand-danger;
+}
+
+.sp-form-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.sp-alert {
+  padding: 14px 16px;
+  border-radius: $border-radius-base;
+  margin-bottom: 20px;
+}
+
+.sp-alert-success {
+  background: $state-success-bg;
+  color: $brand-success;
+}
+
+.sp-alert-danger {
+  background: $state-danger-bg;
+  color: $brand-danger;
+}
+
+.sp-alert-actions {
+  margin-top: 12px;
+}
+]]></css>
+    <data_table>sp_instance</data_table>
+    <demo_data/>
+    <description/>
+    <docs/>
+    <field_list/>
+    <has_preview>false</has_preview>
+    <id>cs_portal_report_issue_widget</id>
+    <internal>false</internal>
+    <link>function link(scope, element, attrs, controller) {
+}</link>
+    <name>CS Portal - Report Issue</name>
+    <option_schema/>
+    <public>false</public>
+    <roles/>
+    <script><![CDATA[(function() {
+  data.spaces = [];
+  data.message = '';
+  data.success = false;
+  data.issueNumber = '';
+
+  try {
+    if (input && input.action === 'submit') {
+      var gr = new GlideRecord('x_2084960_commun_0_issue');
+      gr.initialize();
+      gr.setValue('space', input.space_id || '');
+      gr.setValue('issue_type', input.issue_type || '');
+      gr.setValue('severity', input.severity || '');
+      gr.setValue('description', input.description || '');
+      gr.setValue('reported_by', gs.getUserID());
+      gr.setValue('status', 'new');
+      var id = gr.insert();
+      if (id) {
+        var created = new GlideRecord('x_2084960_commun_0_issue');
+        created.addQuery('sys_id', id);
+        created.setLimit(1);
+        created.query();
+        if (created.next()) {
+          data.issueNumber = created.getValue('number') + '';
+        }
+        data.success = true;
+        data.message = 'Issue reported successfully. We will look into it.';
+      } else {
+        data.message = 'Failed to submit issue report.';
+      }
+      return;
+    }
+
+    // Load spaces for dropdown
+    var spaceGr = new GlideRecord('x_2084960_commun_0_space');
+    spaceGr.orderBy('name');
+    spaceGr.setLimit(100);
+    spaceGr.query();
+    while (spaceGr.next()) {
+      data.spaces.push({
+        sys_id: spaceGr.getUniqueValue(),
+        name: spaceGr.getValue('name') + ''
+      });
+    }
+  } catch(e) {
+    gs.error('Report Issue widget error: ' + e.message);
+    data.message = 'An error occurred.';
+  }
+})();
+]]></script>
+    <servicenow>false</servicenow>
+    <template><![CDATA[<div class="sp-report-issue">
+  <h2 class="sp-report-title">Report an Issue</h2>
+  <p class="sp-report-subtitle">Let us know about any problems with a community space</p>
+
+  <!-- Success Message -->
+  <div class="sp-alert sp-alert-success" ng-if="c.data.success" role="alert">
+    <i class="fa fa-check-circle"></i> {{c.data.message}}
+    <span ng-if="c.data.issueNumber"> (Reference: {{c.data.issueNumber}})</span>
+    <div class="sp-alert-actions">
+      <button type="button" class="btn btn-sm btn-default" ng-click="c.goBack()">Back to Spaces</button>
+    </div>
+  </div>
+
+  <!-- Error Message -->
+  <div class="sp-alert sp-alert-danger" ng-if="c.data.message && !c.data.success" role="alert">
+    <i class="fa fa-exclamation-circle"></i> {{c.data.message}}
+  </div>
+
+  <!-- Form -->
+  <div class="panel panel-default sp-report-panel" ng-if="!c.data.success">
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="issueSpace">Space <span class="sp-required">*</span></label>
+        <select id="issueSpace" class="form-control" ng-model="c.form.space_id">
+          <option value="">-- Select a space --</option>
+          <option ng-repeat="space in c.data.spaces track by space.sys_id" value="{{space.sys_id}}">{{space.name}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="issueType">Issue Type <span class="sp-required">*</span></label>
+        <select id="issueType" class="form-control" ng-model="c.form.issue_type">
+          <option value="">-- Select issue type --</option>
+          <option ng-repeat="type in c.issueTypes track by $index" value="{{type}}">{{type}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="issueSeverity">Severity <span class="sp-required">*</span></label>
+        <select id="issueSeverity" class="form-control" ng-model="c.form.severity">
+          <option value="">-- Select severity --</option>
+          <option ng-repeat="sev in c.severities track by $index" value="{{sev}}">{{sev}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="issueDesc">Description <span class="sp-required">*</span></label>
+        <textarea id="issueDesc" class="form-control" rows="5" placeholder="Describe the issue in detail..." ng-model="c.form.description"></textarea>
+      </div>
+
+      <div class="sp-form-actions">
+        <button type="button" class="btn btn-default" ng-click="c.goBack()">Cancel</button>
+        <button type="button" class="btn btn-primary" ng-click="c.submitIssue()" ng-disabled="!c.canSubmit() || c.submitting">
+          <i class="fa fa-spinner fa-spin" ng-if="c.submitting"></i>
+          <span ng-if="!c.submitting">Submit Report</span>
+          <span ng-if="c.submitting">Submitting...</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+]]></template>
+  </sp_widget>
+</record_update>

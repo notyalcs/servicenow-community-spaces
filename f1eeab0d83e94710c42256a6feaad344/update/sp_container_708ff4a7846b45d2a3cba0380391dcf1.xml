@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_container">
+  <sp_container action="INSERT_OR_UPDATE">
+    <sys_id>708ff4a7846b45d2a3cba0380391dcf1</sys_id>
+    <sys_scope display_value="x_2084960_commun_0">f1eeab0d83e94710c42256a6feaad344</sys_scope>
+    <sys_update_name>sp_container_708ff4a7846b45d2a3cba0380391dcf1</sys_update_name>
+    <background_color/>
+    <background_image/>
+    <background_style>default</background_style>
+    <bootstrap_alt>false</bootstrap_alt>
+    <class_name/>
+    <container_class_name/>
+    <name>Report Container</name>
+    <order>1</order>
+    <semantic_tag/>
+    <sp_page id="cs_portal_report">5b4be526e7ab4b98bd0b8df4b7e09f16</sp_page>
+    <subheader>false</subheader>
+    <title/>
+    <width>container</width>
+  </sp_container>
+</record_update>

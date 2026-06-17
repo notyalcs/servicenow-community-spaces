@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_rectangle_menu_item">
+  <sp_rectangle_menu_item action="INSERT_OR_UPDATE">
+    <sys_id>8cdc0170199d4db4a429df38fc9eaae3</sys_id>
+    <sys_scope display_value="x_2084960_commun_0">f1eeab0d83e94710c42256a6feaad344</sys_scope>
+    <sys_update_name>sp_rectangle_menu_item_8cdc0170199d4db4a429df38fc9eaae3</sys_update_name>
+    <active>true</active>
+    <color>default</color>
+    <condition/>
+    <display_1/>
+    <display_2/>
+    <display_date/>
+    <filter/>
+    <glyph>empty</glyph>
+    <hint/>
+    <kb_article/>
+    <kb_category/>
+    <kb_topic/>
+    <label>Browse Spaces</label>
+    <order>100</order>
+    <record_script/>
+    <roles/>
+    <sc_cat_item/>
+    <sc_category/>
+    <short_description/>
+    <sp_page id="cs_portal_browse">607145836541433f81604cde6d1417b8</sp_page>
+    <sp_rectangle_menu>bdbdbe16ae114c1290005a6495fa6757</sp_rectangle_menu>
+    <sp_rectangle_menu_item/>
+    <table/>
+    <type>page</type>
+    <url/>
+    <url_target/>
+  </sp_rectangle_menu_item>
+</record_update>

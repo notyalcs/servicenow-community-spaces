@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+  <sp_widget action="INSERT_OR_UPDATE">
+    <sys_id>a835c1cc43dd4aa58d419c416e38e483</sys_id>
+    <sys_scope display_value="x_2084960_commun_0">f1eeab0d83e94710c42256a6feaad344</sys_scope>
+    <sys_update_name>sp_widget_a835c1cc43dd4aa58d419c416e38e483</sys_update_name>
+    <category>custom</category>
+    <client_script><![CDATA[api.controller = function($location) {
+  var c = this;
+  c.searchText = '';
+  c.activeFilter = '';
+
+  c.filteredSpaces = function() {
+    var results = c.data.spaces || [];
+    if (c.searchText) {
+      var search = c.searchText.toLowerCase();
+      results = results.filter(function(space) {
+        return (space.name && space.name.toLowerCase().indexOf(search) !== -1) ||
+               (space.description && space.description.toLowerCase().indexOf(search) !== -1);
+      });
+    }
+    if (c.activeFilter) {
+      results = results.filter(function(space) {
+        return space.space_type === c.activeFilter;
+      });
+    }
+    return results;
+  };
+
+  c.setFilter = function(type) {
+    c.activeFilter = (c.activeFilter === type) ? '' : type;
+  };
+
+  c.viewSpace = function(sysId) {
+    $location.search('id', 'cs_portal_space_detail');
+    $location.search('sys_id', sysId);
+  };
+
+  c.getStatusClass = function(status) {
+    if (!status) return 'sp-badge-default';
+    var s = status.toLowerCase();
+    if (s === 'available' || s === 'active') return 'sp-badge-success';
+    if (s === 'maintenance' || s === 'reserved') return 'sp-badge-warning';
+    if (s === 'closed' || s === 'inactive') return 'sp-badge-danger';
+    return 'sp-badge-info';
+  };
+};
+]]></client_script>
+    <controller_as>c</controller_as>
+    <css><![CDATA[.sp-browse-spaces {
+  padding: 20px 0;
+}
+
+.sp-browse-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sp-browse-title {
+  color: $text-color;
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.sp-browse-subtitle {
+  color: $text-secondary;
+  font-size: $font-size-large;
+  margin: 0;
+}
+
+.sp-search-section {
+  max-width: 500px;
+  margin: 0 auto 20px auto;
+}
+
+.sp-search-input {
+  height: $input-height-base;
+  border-radius: $border-radius-base;
+}
+
+.sp-filter-pills {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.sp-pill {
+  display: inline-block;
+  margin: 4px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid $border-tertiary;
+  background: $background-primary;
+  color: $text-color;
+  font-size: $font-size-small;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sp-pill:hover {
+  border-color: $brand-primary;
+  color: $brand-primary;
+}
+
+.sp-pill-active {
+  background: $brand-primary;
+  color: $btn-primary-color;
+  border-color: $brand-primary;
+}
+
+.sp-pill-active:hover {
+  background: $brand-primary-dark;
+  border-color: $brand-primary-dark;
+  color: $btn-primary-color;
+}
+
+.sp-card-grid {
+  margin: 0 -10px;
+}
+
+.sp-space-card {
+  margin-bottom: 20px;
+  border-radius: $border-radius-large;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  border: 1px solid $border-tertiary;
+}
+
+.sp-space-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.sp-card-image {
+  height: 160px;
+  overflow: hidden;
+  background: $background-secondary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sp-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sp-card-placeholder {
+  color: $text-muted;
+  font-size: 48px;
+}
+
+.sp-card-body {
+  padding: 16px;
+}
+
+.sp-card-name {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: $text-color;
+}
+
+.sp-card-meta {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sp-card-type {
+  color: $text-secondary;
+  font-size: $font-size-small;
+}
+
+.sp-card-capacity {
+  color: $text-secondary;
+  font-size: $font-size-small;
+  margin-bottom: 12px;
+}
+
+.sp-card-btn {
+  width: 100%;
+  border-radius: $border-radius-base;
+}
+
+.sp-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.sp-badge-success {
+  background: $state-success-bg;
+  color: $brand-success;
+}
+
+.sp-badge-warning {
+  background: $state-warning-bg;
+  color: $brand-warning;
+}
+
+.sp-badge-danger {
+  background: $state-danger-bg;
+  color: $brand-danger;
+}
+
+.sp-badge-info {
+  background: $state-info-bg;
+  color: $brand-info;
+}
+
+.sp-badge-default {
+  background: $background-secondary;
+  color: $text-secondary;
+}
+
+.sp-alert {
+  padding: 12px 16px;
+  border-radius: $border-radius-base;
+  margin-bottom: 20px;
+}
+
+.sp-alert-danger {
+  background: $state-danger-bg;
+  color: $brand-danger;
+}
+
+.sp-empty-state {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.sp-empty-icon {
+  font-size: 48px;
+  color: $text-muted;
+  margin-bottom: 16px;
+}
+
+.sp-empty-body {
+  color: $text-secondary;
+  font-size: $font-size-large;
+}
+]]></css>
+    <data_table>sp_instance</data_table>
+    <demo_data/>
+    <description/>
+    <docs/>
+    <field_list/>
+    <has_preview>false</has_preview>
+    <id>cs_portal_browse_spaces_widget</id>
+    <internal>false</internal>
+    <link>function link(scope, element, attrs, controller) {
+}</link>
+    <name>CS Portal - Browse Spaces</name>
+    <option_schema/>
+    <public>false</public>
+    <roles/>
+    <script><![CDATA[(function() {
+  data.spaces = [];
+  data.spaceTypes = [];
+  data.message = '';
+
+  try {
+    // Get unique space types for filter pills
+    var typeGr = new GlideRecord('x_2084960_commun_0_space');
+    typeGr.addNotNullQuery('space_type');
+    typeGr.setLimit(50);
+    typeGr.query();
+    var typeSet = {};
+    while (typeGr.next()) {
+      var t = typeGr.getValue('space_type') + '';
+      if (!typeSet[t]) {
+        typeSet[t] = true;
+        data.spaceTypes.push(t);
+      }
+    }
+
+    // Get all spaces
+    var gr = new GlideRecord('x_2084960_commun_0_space');
+    gr.orderBy('name');
+    gr.setLimit(100);
+    gr.query();
+    while (gr.next()) {
+      data.spaces.push({
+        sys_id: gr.getUniqueValue(),
+        name: gr.getValue('name') + '',
+        space_type: gr.getValue('space_type') + '',
+        capacity: gr.getValue('capacity') + '',
+        status: gr.getValue('status') + '',
+        description: gr.getValue('description') + '',
+        image_url: gr.getValue('image_url') + ''
+      });
+    }
+  } catch(e) {
+    gs.error('Browse Spaces widget error: ' + e.message);
+    data.message = 'An error occurred loading spaces.';
+  }
+})();
+]]></script>
+    <servicenow>false</servicenow>
+    <template><![CDATA[<div class="sp-browse-spaces">
+  <div class="sp-browse-header">
+    <h2 class="sp-browse-title">Community Spaces</h2>
+    <p class="sp-browse-subtitle">Find and reserve the perfect space for your needs</p>
+  </div>
+
+  <div class="sp-search-section">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-search"></i></span>
+      <input type="text" class="form-control sp-search-input" placeholder="Search spaces..." ng-model="c.searchText" />
+    </div>
+  </div>
+
+  <div class="sp-filter-pills" ng-if="c.data.spaceTypes.length">
+    <button type="button" class="btn sp-pill" ng-class="{'sp-pill-active': !c.activeFilter}" ng-click="c.setFilter('')">All</button>
+    <button type="button" class="btn sp-pill" ng-repeat="type in c.data.spaceTypes track by $index" ng-class="{'sp-pill-active': c.activeFilter === type}" ng-click="c.setFilter(type)">{{type}}</button>
+  </div>
+
+  <div class="sp-alert sp-alert-danger" ng-if="c.data.message" role="alert">
+    {{c.data.message}}
+  </div>
+
+  <div class="row sp-card-grid">
+    <div class="col-sm-6 col-md-4 col-lg-4" ng-repeat="space in c.filteredSpaces() track by space.sys_id">
+      <div class="panel panel-default sp-space-card">
+        <div class="sp-card-image" ng-if="space.image_url">
+          <img ng-src="{{space.image_url}}" alt="{{space.name}}" class="sp-card-img" />
+        </div>
+        <div class="sp-card-image sp-card-placeholder" ng-if="!space.image_url">
+          <i class="fa fa-building"></i>
+        </div>
+        <div class="panel-body sp-card-body">
+          <h4 class="sp-card-name">{{space.name}}</h4>
+          <div class="sp-card-meta">
+            <span class="sp-badge" ng-class="c.getStatusClass(space.status)">{{space.status}}</span>
+            <span class="sp-card-type"><i class="fa fa-tag"></i> {{space.space_type}}</span>
+          </div>
+          <div class="sp-card-capacity">
+            <i class="fa fa-users"></i> Capacity: {{space.capacity}}
+          </div>
+          <button type="button" class="btn btn-primary sp-card-btn" ng-click="c.viewSpace(space.sys_id)">View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sp-empty-state" ng-if="!c.filteredSpaces().length && !c.data.message">
+    <i class="fa fa-map-marker sp-empty-icon"></i>
+    <p class="sp-empty-body">No spaces found matching your criteria.</p>
+  </div>
+</div>
+]]></template>
+  </sp_widget>
+</record_update>

@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+  <sp_widget action="INSERT_OR_UPDATE">
+    <sys_id>c9c7d3d62a71463993b7dc20db4c47ae</sys_id>
+    <sys_scope display_value="x_2084960_commun_0">f1eeab0d83e94710c42256a6feaad344</sys_scope>
+    <sys_update_name>sp_widget_c9c7d3d62a71463993b7dc20db4c47ae</sys_update_name>
+    <category>custom</category>
+    <client_script><![CDATA[api.controller = function($location) {
+  var c = this;
+
+  c.goReserve = function() {
+    if (c.data.space) {
+      $location.search('id', 'cs_portal_reserve');
+      $location.search('space_id', c.data.space.sys_id);
+    }
+  };
+
+  c.goReport = function() {
+    if (c.data.space) {
+      $location.search('id', 'cs_portal_report');
+      $location.search('space_id', c.data.space.sys_id);
+    }
+  };
+
+  c.goBack = function() {
+    $location.search('id', 'cs_portal_browse');
+    $location.search('sys_id', null);
+  };
+
+  c.getStatusClass = function(status) {
+    if (!status) return 'sp-status-default';
+    var s = status.toLowerCase();
+    if (s === 'available' || s === 'active') return 'sp-status-success';
+    if (s === 'maintenance' || s === 'reserved') return 'sp-status-warning';
+    if (s === 'closed' || s === 'inactive') return 'sp-status-danger';
+    return 'sp-status-info';
+  };
+
+  c.getEnvironment = function() {
+    if (!c.data.space) return '';
+    return c.data.space.indoor === 'true' || c.data.space.indoor === '1' ? 'Indoor' : 'Outdoor';
+  };
+};
+]]></client_script>
+    <controller_as>c</controller_as>
+    <css><![CDATA[.sp-space-detail {
+  padding: 20px 0;
+}
+
+.sp-detail-back {
+  margin-bottom: 15px;
+}
+
+.sp-back-btn {
+  color: $link-color;
+  font-size: $font-size-base;
+  padding: 0;
+}
+
+.sp-back-link {
+  margin-left: 10px;
+}
+
+.sp-detail-banner {
+  height: 250px;
+  border-radius: $border-radius-large;
+  overflow: hidden;
+  margin-bottom: 24px;
+  background: $background-secondary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sp-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sp-banner-placeholder {
+  color: $text-muted;
+  font-size: 64px;
+}
+
+.sp-detail-content {
+  padding: 0;
+}
+
+.sp-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.sp-detail-name {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: $text-color;
+}
+
+.sp-status-indicator {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.sp-status-success {
+  background: $state-success-bg;
+  color: $brand-success;
+}
+
+.sp-status-warning {
+  background: $state-warning-bg;
+  color: $brand-warning;
+}
+
+.sp-status-danger {
+  background: $state-danger-bg;
+  color: $brand-danger;
+}
+
+.sp-status-info {
+  background: $state-info-bg;
+  color: $brand-info;
+}
+
+.sp-status-default {
+  background: $background-secondary;
+  color: $text-secondary;
+}
+
+.sp-detail-description {
+  color: $text-secondary;
+  font-size: $font-size-base;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.sp-info-panel {
+  border-radius: $border-radius-base;
+  border: 1px solid $border-tertiary;
+}
+
+.sp-info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sp-info-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid $border-tertiary;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.sp-info-list li:last-child {
+  border-bottom: none;
+}
+
+.sp-info-list li i {
+  color: $brand-primary;
+  width: 16px;
+  margin-top: 2px;
+}
+
+.sp-info-label {
+  font-weight: 600;
+  color: $text-color;
+  min-width: 80px;
+}
+
+.sp-info-value {
+  color: $text-secondary;
+}
+
+.sp-detail-actions {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid $border-tertiary;
+}
+
+.sp-action-btn {
+  margin-right: 12px;
+  margin-bottom: 10px;
+  border-radius: $border-radius-base;
+}
+
+.sp-alert {
+  padding: 12px 16px;
+  border-radius: $border-radius-base;
+  margin-bottom: 20px;
+}
+
+.sp-alert-warning {
+  background: $state-warning-bg;
+  color: $brand-warning;
+}
+]]></css>
+    <data_table>sp_instance</data_table>
+    <demo_data/>
+    <description/>
+    <docs/>
+    <field_list/>
+    <has_preview>false</has_preview>
+    <id>cs_portal_space_detail_widget</id>
+    <internal>false</internal>
+    <link>function link(scope, element, attrs, controller) {
+}</link>
+    <name>CS Portal - Space Detail</name>
+    <option_schema/>
+    <public>false</public>
+    <roles/>
+    <script><![CDATA[(function() {
+  data.space = null;
+  data.message = '';
+
+  try {
+    var sysId = $sp.getParameter('sys_id') || '';
+    if (!sysId) {
+      data.message = 'No space specified.';
+      return;
+    }
+
+    var gr = new GlideRecord('x_2084960_commun_0_space');
+    gr.addQuery('sys_id', sysId);
+    gr.setLimit(1);
+    gr.query();
+    if (gr.next()) {
+      data.space = {
+        sys_id: gr.getUniqueValue(),
+        name: gr.getValue('name') + '',
+        space_type: gr.getValue('space_type') + '',
+        capacity: gr.getValue('capacity') + '',
+        status: gr.getValue('status') + '',
+        description: gr.getValue('description') + '',
+        address: gr.getValue('address') + '',
+        image_url: gr.getValue('image_url') + '',
+        indoor: gr.getValue('indoor') + ''
+      };
+    } else {
+      data.message = 'Space not found.';
+    }
+  } catch(e) {
+    gs.error('Space Detail widget error: ' + e.message);
+    data.message = 'An error occurred loading space details.';
+  }
+})();
+]]></script>
+    <servicenow>false</servicenow>
+    <template><![CDATA[<div class="sp-space-detail">
+  <div class="sp-alert sp-alert-warning" ng-if="c.data.message" role="alert">
+    <i class="fa fa-exclamation-circle"></i> {{c.data.message}}
+    <button type="button" class="btn btn-sm btn-default sp-back-link" ng-click="c.goBack()">Back to Browse</button>
+  </div>
+
+  <div ng-if="c.data.space">
+    <div class="sp-detail-back">
+      <button type="button" class="btn btn-link sp-back-btn" ng-click="c.goBack()">
+        <i class="fa fa-arrow-left"></i> Back to Spaces
+      </button>
+    </div>
+
+    <div class="sp-detail-banner" ng-if="c.data.space.image_url">
+      <img ng-src="{{c.data.space.image_url}}" alt="{{c.data.space.name}}" class="sp-banner-img" />
+    </div>
+    <div class="sp-detail-banner sp-banner-placeholder" ng-if="!c.data.space.image_url">
+      <i class="fa fa-building"></i>
+    </div>
+
+    <div class="sp-detail-content">
+      <div class="row">
+        <div class="col-sm-12 col-md-8">
+          <div class="sp-detail-header">
+            <h2 class="sp-detail-name">{{c.data.space.name}}</h2>
+            <span class="sp-status-indicator" ng-class="c.getStatusClass(c.data.space.status)">{{c.data.space.status}}</span>
+          </div>
+          <p class="sp-detail-description" ng-if="c.data.space.description">{{c.data.space.description}}</p>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <div class="panel panel-default sp-info-panel">
+            <div class="panel-heading">
+              <h4 class="panel-title">Space Information</h4>
+            </div>
+            <div class="panel-body">
+              <ul class="sp-info-list">
+                <li ng-if="c.data.space.address">
+                  <i class="fa fa-map-marker"></i>
+                  <span class="sp-info-label">Address</span>
+                  <span class="sp-info-value">{{c.data.space.address}}</span>
+                </li>
+                <li>
+                  <i class="fa fa-users"></i>
+                  <span class="sp-info-label">Capacity</span>
+                  <span class="sp-info-value">{{c.data.space.capacity}}</span>
+                </li>
+                <li>
+                  <i class="fa fa-home"></i>
+                  <span class="sp-info-label">Environment</span>
+                  <span class="sp-info-value">{{c.getEnvironment()}}</span>
+                </li>
+                <li>
+                  <i class="fa fa-tag"></i>
+                  <span class="sp-info-label">Type</span>
+                  <span class="sp-info-value">{{c.data.space.space_type}}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sp-detail-actions">
+        <button type="button" class="btn btn-primary btn-lg sp-action-btn" ng-click="c.goReserve()">
+          <i class="fa fa-calendar-plus-o"></i> Reserve This Space
+        </button>
+        <button type="button" class="btn btn-default btn-lg sp-action-btn" ng-click="c.goReport()">
+          <i class="fa fa-flag"></i> Report an Issue
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+]]></template>
+  </sp_widget>
+</record_update>

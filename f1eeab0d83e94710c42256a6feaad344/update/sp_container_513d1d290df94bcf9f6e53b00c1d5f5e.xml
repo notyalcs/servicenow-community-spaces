@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_container">
+  <sp_container action="INSERT_OR_UPDATE">
+    <sys_id>513d1d290df94bcf9f6e53b00c1d5f5e</sys_id>
+    <sys_scope display_value="x_2084960_commun_0">f1eeab0d83e94710c42256a6feaad344</sys_scope>
+    <sys_update_name>sp_container_513d1d290df94bcf9f6e53b00c1d5f5e</sys_update_name>
+    <background_color/>
+    <background_image/>
+    <background_style>default</background_style>
+    <bootstrap_alt>false</bootstrap_alt>
+    <class_name/>
+    <container_class_name/>
+    <name>Reserve Container</name>
+    <order>1</order>
+    <semantic_tag/>
+    <sp_page id="cs_portal_reserve">c875662cdc214d10911a398645c98a51</sp_page>
+    <subheader>false</subheader>
+    <title/>
+    <width>container</width>
+  </sp_container>
+</record_update>
